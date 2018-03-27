@@ -1,6 +1,6 @@
 #include "headers.h"
 
-void linspace(double Ra, double Rb, int N, double r[],int op) // preguntar si llevamos los radios hasta N-1 
+void linspace(double Ra, double Rb, int N, double r[],int op)
 {
 	double c=0.0,k=0.0;
 	c=(Rb - Ra)/((double)N-1);

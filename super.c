@@ -23,3 +23,11 @@ void perimetro(double r1[],double r[],double A[],int N){
 		*(A+i)=(re*re-rw*rw)*2*PI;	
 	}
 }
+
+void vol(double V[],double A[],int Ra,int N)
+{
+	for (int i = 0; i < N; ++i)
+	{
+		V[i]=A[i]*(double)Ra;
+	}
+}

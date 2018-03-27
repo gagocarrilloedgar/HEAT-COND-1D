@@ -1,0 +1,1 @@
+gcc     CMakeFiles/main.dir/temp.c.o CMakeFiles/main.dir/linspace.c.o CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/super.c.o CMakeFiles/main.dir/lamda.c.o CMakeFiles/main.dir/coef.c.o  -o main -rdynamic 

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/coef.c
+headers.h
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+math.h
+-
+stdio.h
+-
+stdlib.h
+-
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/lamda.c
+headers.h
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/linspace.c
+headers.h
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/main.c
+headers.h
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/super.c
+headers.h
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/temp.c
+headers.h
+/home/edgar/Escritorio/greva/3B/gases/HEAT-COND-1D/headers.h
+
