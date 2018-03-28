@@ -5,7 +5,7 @@
 #define PI 3.14159265358979323846;
 
 void linspace(double a, double b, int n, double p[],int op);
-void Area(int ef, double r[],double S[],int N);
+void Area(double ef, double r[],double S[],int N);
 void perimetro(double r[],double r1[],double A[],int N);
 void vectori(int N,double Tin[],double Tinincial);
 void coef0(double a[],int deltat, int N,double rho, double vp[],double cp);

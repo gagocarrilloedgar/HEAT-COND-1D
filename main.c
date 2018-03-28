@@ -3,10 +3,10 @@
 int main()
 {
 	//1. Definición de las entradas del programa 
-	int N=10,M=N+1,Ra=1,Rb=10,op=0,ef=1;
-	double lamdaf=250/*lambda [W/(m*k)]*/,delta=0.1,Texterior=50.0,Textremo=40,rho=10; // variables
-	double  Twall=71.87,alphaextremo=5,alphaexterior=30,/* alpha[1/ºC]*/deltar,T0=10;  // variables
-    double cp=0.7,deltat=3,T1=4,beta=0.5; // T1--> T(n+1)*
+	int N=20  ,M=N+1,op=0;
+	double lamdaf=70/*lambda [W/(m*k)]*/,delta=0.01,Texterior=25.0,Textremo=40,rho=2300; // variables
+	double  Twall=40,alphaextremo=250,alphaexterior=300,/* alpha[1/ºC]*/deltar,T0=10;  // variables
+    double cp=1,deltat=1,T1=4,beta=1,Ra=0.003,Rb=0.01,ef=0.1;; // T1--> T(n+1)*
 	double *Se,*Sw,*S,*Ap,*Tin,*T,*r,*rw,*re,*lamdae,*lamdaw,*Tfut;// vectores
 	double *aw,*ae,*ap,*bp,*apn,*vp,*awn,*aen,*lamdaen,*lamdawn; // k1 y k2 para hacer más fácil coef2
 

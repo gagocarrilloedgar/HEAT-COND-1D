@@ -1,6 +1,6 @@
 #include "headers.h"
 
-void Area(int ef, double r[],double S[],int N){
+void Area(double ef, double r[],double S[],int N){
 
 	for (int i = 0; i <N; ++i)
 	{
