@@ -1,10 +1,19 @@
 
-cmake_minimum_required(VERSION 2.8.12.2)
-project ( CAS1)
+cmake_minimum_required(VERSION 3.0)
 
+project(main)
+file (GLOB SOURCES "./*.c")
 set (CMAKE_C_COMPILER gcc)
 
-file (GLOB SOURCES "./*.c")
+find_package(MPI REQUIRED)
 
-add_executable (main ${SOURCES})
+add_executable(main ${SOURCES})
+
+target_link_libraries(main
+  PRIVATE
+  ${MPI_C_LIBRARIES})
+
+target_include_directories(main
+  PRIVATE
+  ${MPI_C_INCLUDE_PATH}) 
 

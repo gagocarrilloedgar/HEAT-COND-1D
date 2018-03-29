@@ -1,183 +1,238 @@
-#include "headers.h"
+		#include "headers.h"
 
 int main()
 {
-	//1. Definición de las entradas del programa 
-	int N=20  ,M=N+1,op=0;
-	double lamdaf=70/*lambda [W/(m*k)]*/,delta=0.01,Texterior=25.0,Textremo=40,rho=2300; // variables
-	double  Twall=40,alphaextremo=250,alphaexterior=300,/* alpha[1/ºC]*/deltar,T0=10;  // variables
-    double cp=1,deltat=1,T1=4,beta=1,Ra=0.003,Rb=0.01,ef=0.1;; // T1--> T(n+1)*
-	double *Se,*Sw,*S,*Ap,*Tin,*T,*r,*rw,*re,*lamdae,*lamdaw,*Tfut;// vectores
-	double *aw,*ae,*ap,*bp,*apn,*vp,*awn,*aen,*lamdaen,*lamdawn; // k1 y k2 para hacer más fácil coef2
+    struct initial_temperatures init_temp;
+    struct properties prop;
+    struct control cont;
+    struct geometry geo;
+    struct vectors *e,*p,*w;
+    struct control_point *point;
+    struct temperatures *Temp;
 
-	// creamos un espacio dinámico para los vecto=res que utilizaremos.
-	// Geometria 
-	r=(double *)malloc(sizeof(double)*N);
-	re=(double *)malloc(sizeof(double)*(N));
-	rw=(double *)malloc(sizeof(double)*(N));
-    S=(double *)malloc(sizeof(double)*(N));
-	Se=(double *)malloc(sizeof(double)*(N));
-	Sw=(double *)malloc(sizeof(double)*(N));
-	Ap=(double *)malloc(sizeof(double)*(N));
+	//1. input data definiton
+    /*prop=prop_input();
+    init_temp=temp_input();
+    cont=control_input();
+    geo=geometry_input();
+    */
+    init_temp.Twall=40;
+    init_temp.Text=25;
+    init_temp.Textr=30;
+    init_temp.T0=10;
+    init_temp.T1=4;
 
-	// Temperaturas
-	T=(double *)malloc(sizeof(double)*N);
-	Tin=(double *)malloc(sizeof(double)*N);
-    Tfut=(double *)malloc(sizeof(double)*N);
+    prop.rho=2300;
+    prop.cp=1;
+    prop.alphaexte=300;
+    prop.alphaextr=350;
+    prop.lambdaf=70;
 
-	// Coeficientes
-	aw=(double *)malloc(sizeof(double)*N);
-	ae=(double *)malloc(sizeof(double)*N);
-	ap=(double *)malloc(sizeof(double)*N);
-	bp=(double *)malloc(sizeof(double)*N);
+    cont.N=20;
+    cont.deltat=1;
+    cont.delta=0.01;
+    cont.beta=1;
 
-    aen=(double *)malloc(sizeof(double)*N);
-    awn=(double *)malloc(sizeof(double)*N);
-    apn=(double *)malloc(sizeof(double)*N);
-    vp=(double *)malloc(sizeof(double)*N);
+    geo.Ra=0.03;
+    geo.Rb=0.1;
+    geo.ef=0.01;
 
+	// --------------------Dynamic space for matrix and vector------------------------------------------------------
+	// Vectors 
+    e=(struct vectors*)malloc(sizeof(struct vectors));
+        e->S=(double *)malloc(sizeof(double)*cont.N);
+        e->r=(double *)malloc(sizeof(double)*cont.N);
+        e->lambda=(double *)malloc(sizeof(double)*cont.N);
+        e->lambdan=(double *)malloc(sizeof(double)*cont.N);
+        e->a=(double *)malloc(sizeof(double)*cont.N);
+        e->an=(double *)malloc(sizeof(double)*cont.N);
 
-	  if (r==NULL || re==NULL || rw==NULL || S==NULL) 
-    {
-        printf("Out of memory\n");
-        exit(1);
-    }
+        if (e->S==NULL || e->r==NULL || e->lambda==NULL || e->lambdan==NULL || e->a==NULL || e->an==NULL) 
+        {
+            printf("Out of memory\n");
+            exit(1);
+        }
 
-      if (ae==NULL || aw==NULL || ap==NULL || bp==NULL) 
-    {
-        printf("Out of memory\n");
-        exit(1);
-    }
-     if (aen==NULL || awn==NULL || apn==NULL || vp==NULL) 
-    {
-        printf("Out of memory\n");
-        exit(1);
-    }
+     w=(struct vectors*)malloc(sizeof(struct vectors));
+        w->S=(double *)malloc(sizeof(double)*cont.N);
+        w->r=(double *)malloc(sizeof(double)*cont.N);
+        w->lambda=(double *)malloc(sizeof(double)*cont.N);
+        w->lambdan=(double *)malloc(sizeof(double)*cont.N);
+        w->a=(double *)malloc(sizeof(double)*cont.N);
+        w->an=(double *)malloc(sizeof(double)*cont.N);
+
+        if (w->S==NULL || w->r==NULL || w->lambda==NULL || w->lambdan==NULL || w->a==NULL || w->an==NULL) 
+        {
+            printf("Out of memory\n");
+            exit(1);
+        }
+
+     p=(struct vectors*)malloc(sizeof(struct vectors));
+        p->S=(double *)malloc(sizeof(double)*cont.N);
+        p->r=(double *)malloc(sizeof(double)*cont.N);
+        p->lambda=(double *)malloc(sizeof(double)*cont.N);
+        p->lambdan=(double *)malloc(sizeof(double)*cont.N);
+        p->a=(double *)malloc(sizeof(double)*cont.N);
+        p->an=(double *)malloc(sizeof(double)*cont.N);
+
+        if (p->S==NULL || p->r==NULL || p->lambda==NULL || p->lambdan==NULL || p->a==NULL || p->an==NULL) 
+        {
+            printf("Out of memory\n");
+            exit(1);
+        }
+
+    // Control points 
+    point=(struct control_point*)malloc(sizeof(struct control_point));
+        point->vp=(double *)malloc(sizeof(double)*cont.N);
+        point->Ap=(double *)malloc(sizeof(double)*cont.N);
+        point->bp=(double *)malloc(sizeof(double)*cont.N);
+
+        if (point->vp==NULL || point->Ap==NULL || point->bp==NULL) 
+        {
+            printf("Out of memory\n");
+            exit(1);
+        }
+
+    // Temperatures
+    Temp=(struct temperatures *)malloc(sizeof(struct temperatures));
+        Temp->T=(double *)malloc(sizeof(double)*cont.N);
+        Temp->Tin=(double *)malloc(sizeof(double)*cont.N);
+        Temp->Tfut=(double *)malloc(sizeof(double)*cont.N);
+
+         if (Temp->T==NULL || Temp->Tin==NULL || Temp->Tfut==NULL) 
+        {
+            printf("Out of memory\n");
+            exit(1);
+        }
 
 	//2.Cálculos previos (Geometria) 
-	deltar=(double)(Rb-Ra)/(N-1);
 
-    linspace(Ra,Rb,N,rw,1); //rw
-    linspace(Ra,Rb,N,r,2); //r
-    linspace(Ra,Rb,N,re,3); //re
-    *(r+N)=Rb;
+    //2.Cálculos previos (Geometria) 
+	cont.deltar=(geo.Rb-geo.Ra)/(double)(cont.N-1);
 
-    Area(ef,rw,Sw,N);//Sw
-    Area(ef,re,Se,N);//Se
-    Area(ef,r,S,N);//S
-    perimetro(re,rw,Ap,N);//Ap
-    vol(vp,S,Rb-Ra,N);//Vp
+    linspace(geo.Ra,geo.Rb,cont.N,w->r,1); //rw
+    linspace(geo.Ra,geo.Rb,cont.N,p->r,2); //r
+    linspace(geo.Ra,geo.Rb,cont.N,e->r,3); //re
+    *(p->r+cont.N)=geo.Rb;
+
+    Area(geo.ef,w->r,w->S,cont.N);//Sw
+    Area(geo.ef,e->r,e->S,cont.N);//Se
+    Area(geo.ef,p->r,p->S,cont.N);//S
+    perimetro(e->r,w->r,point->Ap,cont.N);//Ap
+    vol(point->vp,p->S,geo.Rb-geo.Ra,cont.N);//Vp
 
     // 3. Mapa incial de temperaturas
-    if (T==NULL || Tin==NULL || Tfut==NULL) 
-    {
-        printf("Out of memory\n");
-        exit(1);
-    }
-    vectori(N,Tin,T0);
-    vectori(N,Tfut,T1);
+    vectori(cont.N,Temp->Tin,init_temp.T0);
+    vectori(cont.N,Temp->Tfut,init_temp.T1);
 
     //4. Coeficientes de discretización
-    lamdae=(double *)malloc(sizeof(double)*N);
-    lamdaen=(double *)malloc(sizeof(double)*N);
-    lamdaw=(double *)malloc(sizeof(double)*N);
-    lamdawn=(double *)malloc(sizeof(double)*N);
+    lambda(e->lambda,cont.N,Temp->Tin,prop.lambdaf,2);
+    lambda(w->lambda,cont.N,Temp->Tin,prop.lambdaf,1);
+    lambda(e->lambdan,cont.N,Temp->Tfut,prop.lambdaf,2);
+    lambda(w->lambdan,cont.N,Temp->Tfut,prop.lambdaf,1);
 
-     if (lamdaw==NULL || lamdae==NULL || lamdawn==NULL || lamdaen==NULL ) 
-    {
-        printf("Out of memory\n");
-        exit(1);
-    }
-
-    lambda(lamdae,N,Tin,lamdaf,2);
-    lambda(lamdaw,N,Tin,lamdaf,1);
-    lambda(lamdaen,N,Tfut,lamdaf,2);
-    lambda(lamdawn,N,Tfut,lamdaf,1);
-
-    coef0(apn,deltat,N,rho,vp,cp);
-    coef1(aw,N,Sw,deltar,lamdaw,beta,1);//aw
-    coef1(ae,N,Se,deltar,lamdae,beta,1);//ae
-    coef1(aen,N,Se,deltar,lamdae,beta,2);//aen
-    coef1(awn,N,Se,deltar,lamdae,beta,2);//awn
-    coef2(bp,N,Texterior,alphaexterior,Ap,awn,aen,Tin,apn);//bp
-    coef2_2(bp,N,Texterior,Textremo,alphaexterior,alphaextremo,Ap,awn,Tin,apn);
-    coef3(aw,ae,apn,ap,N); //ap
+    coef0(p->an,cont.deltat,cont.N,prop.rho,point->vp,prop.cp);
+    coef1(w->a,cont.N,w->S,cont.deltar,w->lambda,cont.beta,1);//aw
+    coef1(e->a,cont.N,e->S,cont.deltar,e->lambda,cont.beta,1);//ae
+    coef1(e->an,cont.N,e->S,cont.deltar,e->lambda,cont.beta,2);//aen
+    coef1(w->an,cont.N,w->S,cont.deltar,w->lambda,cont.beta,2);//awn
+    coef2(point->bp,cont.N,init_temp.Text,prop.alphaexte,point->Ap,w->an,e->an,Temp->Tin,p->an);//bp
+    coef2_2(point->bp,cont.N,init_temp.Text,init_temp.Textr,prop.alphaexte,prop.alphaextr,point->Ap,w->an,Temp->Tin,p->an);
+    coef3(w->a,e->a,p->an,p->a,cont.N); //ap
 
     //condiciones de contorno(i=0)--> primer elemento
-    *(ap+0)=1;
-    *(ae+0)=0;
-    *(bp+0)=Twall;
-    *(aw+0)=0;
+    *(p->a+0)=1;
+    *(e->a+0)=0;
+    *(point->bp+0)=init_temp.Twall;
+    *(w->a+0)=0;
 
     //condiciones de contorno(i=N+1) --> último elemento 
-    *(ae+N-1)=0;
+    *(e->a+cont.N-1)=0;
     
     // 5 Aplicación de GAUSS-SEIDEL 
-	temp(T,Tfut, N, ap,ae,aw,bp);
+	temp(Temp->T,Temp->Tfut, cont.N, p->a,e->a,w->a,point->bp);
     //condiciones de contorno de T
-    *(T+0)=Twall;
+    *(Temp->T+0)=init_temp.Twall;
 
-    for (int i = 0 ; i < N; ++i)
+    for (int i = 0 ; i < cont.N; ++i)
     {
-    	printf("T=%f i=%d \n",*(T+i),i );
+    	printf("T=%f i=%d \n",*(Temp->T+i),i );
     }
     
-    int ok=max(T,Tin,N,delta);	
+    int ok=max(Temp->T,Temp->Tin,cont.N,cont.delta);	
     printf("ok =%d \n",ok );
 
     while(ok==0){
+    	linspace(geo.Ra,geo.Rb,cont.N,w->r,1); //rw
+    	linspace(geo.Ra,geo.Rb,cont.N,p->r,2); //r
+    	linspace(geo.Ra,geo.Rb,cont.N,e->r,3); //re
+    	*(p->r+cont.N)=geo.Rb;
 
-        lambda(lamdae,N,Tin,lamdaf,2);
-        lambda(lamdaw,N,Tin,lamdaf,1);
-        lambda(lamdaen,N,Tfut,lamdaf,2);
-        lambda(lamdawn,N,Tfut,lamdaf,1);
+    	Area(geo.ef,w->r,w->S,cont.N);//Sw
+    	Area(geo.ef,e->r,e->S,cont.N);//Se
+    	Area(geo.ef,p->r,p->S,cont.N);//S
+    	perimetro(e->r,w->r,point->Ap,cont.N);//Ap
+    	vol(point->vp,p->S,geo.Rb-geo.Ra,cont.N);//Vp
 
-        coef0(apn,deltat,N,rho,vp,cp);
-        coef1(aw,N,Sw,deltar,lamdaw,beta,1);//aw
-        coef1(ae,N,Se,deltar,lamdae,beta,1);//ae
-        coef1(aen,N,Se,deltar,lamdae,beta,2);//aen
-        coef1(awn,N,Se,deltar,lamdae,beta,2);//awn
-        coef2(bp,N,Texterior,alphaexterior,Ap,awn,aen,Tin,apn);//bp
-        coef2_2(bp,N,Texterior,Textremo,alphaexterior,alphaextremo,Ap,awn,Tin,apn);
-        coef3(aw,ae,bp,ap,N); //ap
+	    // 3. Mapa incial de temperaturas
+    	vectori(cont.N,Temp->Tin,init_temp.T0);
+    	vectori(cont.N,Temp->Tfut,init_temp.T1);
 
-        //condiciones de contorno(i=0)--> primer elemento
-        *(ap+0)=1;
-        *(ae+0)=0;
-        *(bp+0)=Twall;
-        *(aw+0)=0;
+    	//4. Coeficientes de discretización
+    	lambda(e->lambda,cont.N,Temp->Tin,prop.lambdaf,2);
+    	lambda(w->lambda,cont.N,Temp->Tin,prop.lambdaf,1);
+    	lambda(e->lambdan,cont.N,Temp->Tfut,prop.lambdaf,2);
+    	lambda(w->lambdan,cont.N,Temp->Tfut,prop.lambdaf,1);
 
-        //condiciones de contorno(i=N+1) --> último elemento 
-        *(ae+N-1)=0;
+	    coef0(p->an,cont.deltat,cont.N,prop.rho,point->vp,prop.cp);
+	    coef1(w->a,cont.N,w->S,cont.deltar,w->lambda,cont.beta,1);//aw
+   	 	coef1(e->a,cont.N,e->S,cont.deltar,e->lambda,cont.beta,1);//ae
+    	coef1(e->an,cont.N,e->S,cont.deltar,e->lambda,cont.beta,2);//aen
+    	coef1(w->an,cont.N,w->S,cont.deltar,w->lambda,cont.beta,2);//awn
+	    coef2(point->bp,cont.N,init_temp.Text,prop.alphaexte,point->Ap,w->an,e->an,Temp->Tin,p->an);//bp
+	    coef2_2(point->bp,cont.N,init_temp.Text,init_temp.Textr,prop.alphaexte,prop.alphaextr,point->Ap,w->an,Temp->Tin,p->an);
+	    coef3(w->a,e->a,p->an,p->a,cont.N); //ap
 
-    	for (int i = 0; i < N; ++i)
+    	//condiciones de contorno(i=0)--> primer elemento
+    	*(p->a+0)=1;
+    	*(e->a+0)=0;
+    	*(point->bp+0)=init_temp.Twall;
+    	*(w->a+0)=0;
+
+    	//condiciones de contorno(i=N+1) --> último elemento 
+   	 	*(e->a+cont.N-1)=0;
+        
+
+    	for (int i = 0; i < cont.N; ++i)
     	{
-    		*(Tin+i)=*(T+i);
-            *(Tfut+i)=*(T+i);
+    		*(Temp->Tin+i)=*(Temp->T +i);
+            *(Temp->Tfut+i)=*(Temp->T +i);
     	}
 
         // recalculating temperatures
-    	temp(T,Tin,N,ap,ae,aw,bp);
-    	ok=max(T,Tin,N,delta);
+    	temp(Temp->T,Temp->Tin,cont.N,p->a,e->a,w->a,point->bp);
+    	ok=max(Temp->T,Temp->Tin,cont.N,cont.delta);
     	printf("ok=%d \n", ok);
 
-    	for (int i = 0; i < N; ++i)
+    	for (int i = 0; i < cont.N; ++i)
     	{
-    		printf("T=%f i=%d \n",*(T+i),i );
+    		printf("T=%f i=%d \n",*(Temp->T+i),i );
    		}
     	
     }
     printf("\n");
-    for (int i = 0; i < N; ++i)
+    for (int i = 0; i <cont.N; ++i)
     {
-    	printf("ae=%f ap=%f aw=%f bp=%f \n",*(ae+i),*(ap+i),*(aw+i),*(bp+i) );
+    	printf("ae=%f ap=%f aw=%f bp=%f \n",*(e->a+i),*(p->a+i),*(w->a+i),*(point->bp+i) );
     }
+	
+   free(e->r); free(e->S); free(e->lambda); free(e->lambdan); free(e->a); free(e->an); free(e); 
+   free(w->r); free(w->S); free(w->lambda); free(w->lambdan); free(w->a); free(w->an); free(w); 
+   free(p->r); free(p->S); free(p->lambda); free(p->lambdan); free(p->a); free(p->an); free(p); 
 
-    
-    free(r);free(re);free(rw);free(Se);free(Sw);free(Ap);free(Tin);
-    free(lamdae); free(lamdaw); free(lamdawn); free(lamdaen); free(S);
-    free(vp); free(apn); free(T); free(Tfut);
-    free(ae); free(aw);free(ap); free(bp); free(awn); free(aen);
+   free(point->vp); free(point->Ap); free(point->bp);
+
+   free(Temp->T); free(Temp->Tin); free(Temp->Tfut);
 
 	return 0;
 }

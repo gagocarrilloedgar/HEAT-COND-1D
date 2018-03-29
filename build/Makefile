@@ -150,6 +150,33 @@ coef.c.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/coef.c.s
 .PHONY : coef.c.s
 
+input_data.o: input_data.c.o
+
+.PHONY : input_data.o
+
+# target to build an object file
+input_data.c.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/input_data.c.o
+.PHONY : input_data.c.o
+
+input_data.i: input_data.c.i
+
+.PHONY : input_data.i
+
+# target to preprocess a source file
+input_data.c.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/input_data.c.i
+.PHONY : input_data.c.i
+
+input_data.s: input_data.c.s
+
+.PHONY : input_data.s
+
+# target to generate assembly for a file
+input_data.c.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/input_data.c.s
+.PHONY : input_data.c.s
+
 lamda.o: lamda.c.o
 
 .PHONY : lamda.o
@@ -297,6 +324,9 @@ help:
 	@echo "... coef.o"
 	@echo "... coef.i"
 	@echo "... coef.s"
+	@echo "... input_data.o"
+	@echo "... input_data.i"
+	@echo "... input_data.s"
 	@echo "... lamda.o"
 	@echo "... lamda.i"
 	@echo "... lamda.s"
