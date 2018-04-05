@@ -1,11 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main.dir/temp.c.o"
+  "CMakeFiles/main.dir/coef.c.o"
+  "CMakeFiles/main.dir/input_data.c.o"
+  "CMakeFiles/main.dir/lamda.c.o"
   "CMakeFiles/main.dir/linspace.c.o"
   "CMakeFiles/main.dir/main.c.o"
   "CMakeFiles/main.dir/super.c.o"
-  "CMakeFiles/main.dir/input_data.c.o"
-  "CMakeFiles/main.dir/lamda.c.o"
-  "CMakeFiles/main.dir/coef.c.o"
+  "CMakeFiles/main.dir/temp.c.o"
   "main.pdb"
   "main"
 )
