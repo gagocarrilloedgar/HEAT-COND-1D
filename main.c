@@ -22,20 +22,20 @@ int main()
     init_temp.T0=10;
     init_temp.T1=4;
 
-    prop.rho=2300;
-    prop.cp=1;
-    prop.alphaexte=300;
-    prop.alphaextr=350;
+    prop.rho=230;
+    prop.cp=0.8;
+    prop.alphaexte=30;
+    prop.alphaextr=35;
     prop.lambdaf=70;
 
-    cont.N=100;
+    cont.N=10;
     cont.deltat=1;
     cont.delta=0.01;
-    cont.beta=1;
+    cont.beta=0;
 
-    geo.Ra=0.03;
-    geo.Rb=0.1;
-    geo.ef=0.01;
+    geo.Ra=1;
+    geo.Rb=10;
+    geo.ef=1;
 
 	// --------------------Dynamic space for matrix and vector------------------------------------------------------
 	// Vectors
@@ -131,6 +131,7 @@ int main()
     // _n dependen de las condiciones iniciales no se actualizan para un delta de t
     lambda(e->lambdan,cont.N,Temp->Tin,prop.lambdaf,2);
     lambda(w->lambdan,cont.N,Temp->Tin,prop.lambdaf,1);
+		coef0(p->an,cont.deltat,cont.N,prop.rho,point->vp,prop.cp);
 
     coef1(w->a,cont.N,w->S,cont.deltar,w->lambda,cont.beta,1);//aw
     coef1(e->a,cont.N,e->S,cont.deltar,e->lambda,cont.beta,1);//ae
@@ -141,8 +142,15 @@ int main()
     coef2(point->bp,cont.N,init_temp.Text,prop.alphaexte,point->Ap,w->an,e->an,Temp->Tin,p->an,cont.beta);//bp
 
     coef2_2(point->bp,cont.N,init_temp.Text,prop.alphaexte,point->Ap,p->S,w->an,Temp->Tin,p->an,cont.beta);//bpn
-    coef3(w->a,e->a,p->a,cont.N,cont.beta,p->an); //ap
+		if (cont.beta==0)
+		{
+			coef3(w->an,e->an,p->a,cont.N,cont.beta,p->an); //ap
+		}
 
+		else
+		{
+			coef3(w->a,e->a,p->a,cont.N,cont.beta,p->an); //ap
+		}
     //condiciones de contorno(i=0)--> primer elemento
     *(p->a+0)=1;
     *(e->a+0)=0;
@@ -164,31 +172,28 @@ int main()
 
     int ok=max(Temp->T,Temp->Tfut,cont.N,cont.delta);
     printf("ok =%d \n",ok );
-
+if(cont.beta!=0)
+{
     while(ok==0){
-
 			//4. Coeficientes de discretización
 			lambda(e->lambda,cont.N,Temp->Tfut,prop.lambdaf,2);
 	    lambda(w->lambda,cont.N,Temp->Tfut,prop.lambdaf,1);
+			coef0(p->an,cont.deltat,cont.N,prop.rho,point->vp,prop.cp);
 			coef1(w->a,cont.N,w->S,cont.deltar,w->lambda,cont.beta,1);//aw
 	    coef1(e->a,cont.N,e->S,cont.deltar,e->lambda,cont.beta,1);//ae
 			coef3(w->a,e->a,p->a,cont.N,cont.beta,p->an); //ap
-
 			//condiciones de contorno(i=0)--> primer elemento
 	    *(p->a+0)=1;
 	    *(e->a+0)=0;
 	    *(point->bp+0)=init_temp.Twall;
 	    *(w->a+0)=0;
-
 	    //condiciones de contorno(i=N+1) --> último elemento
 	    *(e->a+cont.N-1)=0;
-
 
 			for (int i = 0; i < cont.N; ++i)
     	{
             *(Temp->Tfut+i)=*(Temp->T +i);
     	}
-
         // recalculating temperatures
     	temp(Temp->T,Temp->Tfut,cont.N,p->a,e->a,w->a,point->bp);
     	ok=max(Temp->T,Temp->Tfut,cont.N,cont.delta);
@@ -198,8 +203,46 @@ int main()
     	{
     		printf("T=%f i=%d \n",*(Temp->T+i),i );
    		}
-
     }
+}
+
+if (cont.beta==0)
+{
+	while(ok==0){
+		//4. Coeficientes de discretización
+		lambda(e->lambda,cont.N,Temp->Tin,prop.lambdaf,2);
+		lambda(w->lambda,cont.N,Temp->Tin,prop.lambdaf,1);
+		coef1(w->an,cont.N,w->S,cont.deltar,w->lambdan,cont.beta,2);//awn // no se actualizan
+    coef1(e->an,cont.N,e->S,cont.deltar,e->lambdan,cont.beta,2);//aen // no se actualiza en este delata de t
+		coef2(point->bp,cont.N,init_temp.Text,prop.alphaexte,point->Ap,w->an,e->an,Temp->Tin,p->an,cont.beta);//bp
+		coef2_2(point->bp,cont.N,init_temp.Text,prop.alphaexte,point->Ap,p->S,w->an,Temp->Tin,p->an,cont.beta);//bp_final
+		coef3(w->an,e->an,p->a,cont.N,cont.beta,p->an); //ap
+
+		//condiciones de contorno(i=0)--> primer elemento
+		*(p->an+0)=1;
+		*(e->an+0)=0;
+		*(point->bp+0)=init_temp.Twall;
+		*(w->an+0)=0;
+		//condiciones de contorno(i=N+1) --> último elemento
+		*(e->an+cont.N-1)=0;
+
+		for (int i = 0; i < cont.N; ++i)
+		{
+					*(Temp->Tin+i)=*(Temp->T +i);
+		}
+			// recalculating temperatures
+		temp(Temp->T,Temp->Tin,cont.N,p->a,e->a,w->a,point->bp);
+		ok=max(Temp->T,Temp->Tin,cont.N,cont.delta);
+		printf("ok=%d \n", ok);
+
+		for (int i = 0; i < cont.N; ++i)
+		{
+			printf("T=%f i=%d \n",*(Temp->T+i),i );
+		}
+
+	}
+}
+
     printf("\n");
     for (int i = 0; i <cont.N; ++i)
     {
