@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/EscribrFichero.c
+headers.h
+/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/headers.h
+
 /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/coef.c
 headers.h
 /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/headers.h

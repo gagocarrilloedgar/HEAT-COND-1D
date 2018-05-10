@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/main.dir/EscribrFichero.c.o"
   "CMakeFiles/main.dir/coef.c.o"
   "CMakeFiles/main.dir/input_data.c.o"
   "CMakeFiles/main.dir/lamda.c.o"

@@ -22,7 +22,7 @@ int max(double T[],double Tin[],int N, double delta ){
 		}
 	}
 
-	printf("max=%f \n",max);
+printf("max=%f \n",max);
 
 	if (max<delta)
 		return 1;

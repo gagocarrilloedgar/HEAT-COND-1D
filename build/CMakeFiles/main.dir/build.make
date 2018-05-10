@@ -57,9 +57,33 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
+CMakeFiles/main.dir/EscribrFichero.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/EscribrFichero.c.o: ../EscribrFichero.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/EscribrFichero.c.o"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/EscribrFichero.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/EscribrFichero.c
+
+CMakeFiles/main.dir/EscribrFichero.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/EscribrFichero.c.i"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/EscribrFichero.c > CMakeFiles/main.dir/EscribrFichero.c.i
+
+CMakeFiles/main.dir/EscribrFichero.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/EscribrFichero.c.s"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/EscribrFichero.c -o CMakeFiles/main.dir/EscribrFichero.c.s
+
+CMakeFiles/main.dir/EscribrFichero.c.o.requires:
+
+.PHONY : CMakeFiles/main.dir/EscribrFichero.c.o.requires
+
+CMakeFiles/main.dir/EscribrFichero.c.o.provides: CMakeFiles/main.dir/EscribrFichero.c.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/EscribrFichero.c.o.provides.build
+.PHONY : CMakeFiles/main.dir/EscribrFichero.c.o.provides
+
+CMakeFiles/main.dir/EscribrFichero.c.o.provides.build: CMakeFiles/main.dir/EscribrFichero.c.o
+
+
 CMakeFiles/main.dir/coef.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/coef.c.o: ../coef.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/coef.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/coef.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/coef.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/coef.c
 
 CMakeFiles/main.dir/coef.c.i: cmake_force
@@ -83,7 +107,7 @@ CMakeFiles/main.dir/coef.c.o.provides.build: CMakeFiles/main.dir/coef.c.o
 
 CMakeFiles/main.dir/input_data.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/input_data.c.o: ../input_data.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/input_data.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/input_data.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/input_data.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/input_data.c
 
 CMakeFiles/main.dir/input_data.c.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/main.dir/input_data.c.o.provides.build: CMakeFiles/main.dir/input_dat
 
 CMakeFiles/main.dir/lamda.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/lamda.c.o: ../lamda.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/lamda.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/lamda.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/lamda.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/lamda.c
 
 CMakeFiles/main.dir/lamda.c.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/main.dir/lamda.c.o.provides.build: CMakeFiles/main.dir/lamda.c.o
 
 CMakeFiles/main.dir/linspace.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/linspace.c.o: ../linspace.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/linspace.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/linspace.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/linspace.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/linspace.c
 
 CMakeFiles/main.dir/linspace.c.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/main.dir/linspace.c.o.provides.build: CMakeFiles/main.dir/linspace.c.
 
 CMakeFiles/main.dir/main.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/main.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/main.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/main.c
 
 CMakeFiles/main.dir/main.c.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/main.dir/main.c.o.provides.build: CMakeFiles/main.dir/main.c.o
 
 CMakeFiles/main.dir/super.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/super.c.o: ../super.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/super.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/main.dir/super.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/super.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/super.c
 
 CMakeFiles/main.dir/super.c.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/main.dir/super.c.o.provides.build: CMakeFiles/main.dir/super.c.o
 
 CMakeFiles/main.dir/temp.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/temp.c.o: ../temp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/main.dir/temp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/main.dir/temp.c.o"
 	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/temp.c.o   -c /home/edgar/Escritorio/greva/gases/HEAT-COND-1D/temp.c
 
 CMakeFiles/main.dir/temp.c.i: cmake_force
@@ -227,6 +251,7 @@ CMakeFiles/main.dir/temp.c.o.provides.build: CMakeFiles/main.dir/temp.c.o
 
 # Object files for target main
 main_OBJECTS = \
+"CMakeFiles/main.dir/EscribrFichero.c.o" \
 "CMakeFiles/main.dir/coef.c.o" \
 "CMakeFiles/main.dir/input_data.c.o" \
 "CMakeFiles/main.dir/lamda.c.o" \
@@ -238,6 +263,7 @@ main_OBJECTS = \
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
+main: CMakeFiles/main.dir/EscribrFichero.c.o
 main: CMakeFiles/main.dir/coef.c.o
 main: CMakeFiles/main.dir/input_data.c.o
 main: CMakeFiles/main.dir/lamda.c.o
@@ -248,7 +274,7 @@ main: CMakeFiles/main.dir/temp.c.o
 main: CMakeFiles/main.dir/build.make
 main: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -256,6 +282,7 @@ CMakeFiles/main.dir/build: main
 
 .PHONY : CMakeFiles/main.dir/build
 
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/EscribrFichero.c.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/coef.c.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/input_data.c.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/lamda.c.o.requires

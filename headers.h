@@ -28,6 +28,11 @@ void temp(double T[],double Tin[],int N,double ap[],double ae[],double aw[],doub
 int max(double T[],double Tin[],int N, double delta );
 void lambda(double *x,int N,double *T,double k,int op);
 
+// ---------------------GuardarDatos
+
+void ControlFichero(char *path,int K,double *V,int N,int argc , char **argv);
+
+
 // --------------------------------------------DATA STRUCTURE DEFINITION--------------------------------------
 
 struct initial_temperatures //init_temp
@@ -47,7 +52,7 @@ struct properties //prop
 struct control //cont
 {
 	int N;
-	double deltat, deltar,delta,beta;
+	double deltat, deltar,delta,beta,time;
 
 };
 

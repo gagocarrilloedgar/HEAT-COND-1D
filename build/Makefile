@@ -123,6 +123,33 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+EscribrFichero.o: EscribrFichero.c.o
+
+.PHONY : EscribrFichero.o
+
+# target to build an object file
+EscribrFichero.c.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/EscribrFichero.c.o
+.PHONY : EscribrFichero.c.o
+
+EscribrFichero.i: EscribrFichero.c.i
+
+.PHONY : EscribrFichero.i
+
+# target to preprocess a source file
+EscribrFichero.c.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/EscribrFichero.c.i
+.PHONY : EscribrFichero.c.i
+
+EscribrFichero.s: EscribrFichero.c.s
+
+.PHONY : EscribrFichero.s
+
+# target to generate assembly for a file
+EscribrFichero.c.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/EscribrFichero.c.s
+.PHONY : EscribrFichero.c.s
+
 coef.o: coef.c.o
 
 .PHONY : coef.o
@@ -321,6 +348,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... main"
 	@echo "... edit_cache"
+	@echo "... EscribrFichero.o"
+	@echo "... EscribrFichero.i"
+	@echo "... EscribrFichero.s"
 	@echo "... coef.o"
 	@echo "... coef.i"
 	@echo "... coef.s"

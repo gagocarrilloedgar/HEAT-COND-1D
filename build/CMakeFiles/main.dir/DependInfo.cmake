@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/EscribrFichero.c" "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles/main.dir/EscribrFichero.c.o"
   "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/coef.c" "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles/main.dir/coef.c.o"
   "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/input_data.c" "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles/main.dir/input_data.c.o"
   "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/lamda.c" "/home/edgar/Escritorio/greva/gases/HEAT-COND-1D/build/CMakeFiles/main.dir/lamda.c.o"
