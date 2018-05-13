@@ -1,0 +1,40 @@
+ Distribution TemperaturesInfluenciaDeN_beta0.txt: 
+0.000000 
+126.500000 
+5.107692 
+ Distribution TemperaturesInfluenciaDeN_beta0.txt: 
+0.000000 
+126.500000 
+9.964444 
+9.964444 
+6.096124 
+ Distribution TemperaturesInfluenciaDeN_beta0.txt: 
+0.000000 
+126.500000 
+9.987200 
+9.987200 
+9.987200 
+9.987200 
+6.318904 
+ Distribution TemperaturesInfluenciaDeN_beta0.txt: 
+0.000000 
+126.500000 
+9.993469 
+9.993469 
+9.993469 
+9.993469 
+9.993469 
+9.993469 
+6.416644 
+ Distribution TemperaturesInfluenciaDeN_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 

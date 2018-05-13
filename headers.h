@@ -32,6 +32,9 @@ void lambda(double *x,int N,double *T,double k,int op);
 
 void ControlFichero(char *path,int K,double *V,int N,int argc , char **argv);
 
+//-----------------------------General Functions------------------
+void InitialConfigurations(struct geometry *geo,struct initial_temperatures *init_temp,struct vectors *e,struct control *cont,struct vectors *p,struct vectors *w);
+
 
 // --------------------------------------------DATA STRUCTURE DEFINITION--------------------------------------
 

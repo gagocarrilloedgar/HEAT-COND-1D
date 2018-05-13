@@ -1,0 +1,84 @@
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
+ Distribution TemperaturesInfluenciaDeDeltat_beta0.txt: 
+0.000000 
+126.500000 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+9.996049 
+6.471512 
